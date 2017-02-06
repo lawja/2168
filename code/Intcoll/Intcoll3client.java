@@ -14,7 +14,7 @@ public class Intcoll3client
    public static void main(String[] args)
    {
       int value; Scanner keyboard=new Scanner(System.in);
-      Intcoll3 P=new Intcoll3(9), N=new Intcoll3(), L= new Intcoll3();
+      Intcoll3 P=new Intcoll3(5), N=new Intcoll3(5), L= new Intcoll3(5);
 
       System.out.println("Enter an integer to be inserted or 0 to quit:");
       value=keyboard.nextInt();
@@ -32,8 +32,8 @@ public class Intcoll3client
       System.out.println("\nThe values in collection L are:");
       L.print();
 
-      if (P.equals(N)) System.out.println("\nP and N are equal.");
-      else System.out.println("\nP and N are NOT equal.");
+      if (P.equals(L)) System.out.println("\nP and L are equal.");
+      else System.out.println("\nP and L are NOT equal.");
       Intcoll3 A=new Intcoll3(); A.copy(L);
       System.out.println("\nThe values in the copy of L are:\n");
       A.print();
@@ -42,7 +42,20 @@ public class Intcoll3client
          System.out.println("\n" + x + " is in collection P");
       else
          System.out.println("\n" + x + " is not in collection P");
+      System.out.println("Sum of P: " + sum(P));
+   }
 
+   public static int sum(Intcoll3 obj){
+      int hm = obj.get_howmany();
+      int i = 0, k = 0, sum = 0;
+      while(i != hm){
+         if(obj.belongs(k)){
+            sum += k;
+            i++;
+         }
+         k++;
+      }
+      return sum;
    }
 }
 

@@ -1,19 +1,20 @@
+
 //**********************************************************
-// FILE: NAME   : intcoll4client.java
-// DESCRIPTION  : This is a client of class Intcoll4.
+// FILE: NAME   : intcoll5client.java
+// DESCRIPTION  : This is a client of class Intcoll5.
 // Christopher Lawrence 1.25.17
 //**********************************************************
 
 import java.util.*;
 
-public class Intcoll4client
+public class Intcoll5client
 {
    public static final int SENTINEL = 0;
 
    public static void main(String[] args)
    {
       int value; Scanner keyboard=new Scanner(System.in);
-      Intcoll4 P=new Intcoll4(5), N=new Intcoll4(5), L= new Intcoll4(5);
+      Intcoll5 P=new Intcoll5(5), N=new Intcoll5(5), L= new Intcoll5(5);
 
       System.out.println("Enter an integer to be inserted or 0 to quit:");
       value=keyboard.nextInt();
@@ -33,12 +34,16 @@ public class Intcoll4client
 
       if (P.equals(N)) System.out.println("\nP and N are equal.");
       else System.out.println("\nP and N are NOT equal.");
-      Intcoll4 A=new Intcoll4(); A.copy(L);
+      Intcoll5 A=new Intcoll5(); A.copy(L);
+      System.out.println("\nThe values in the copy of L are:\n");
+      A.print();
+      A.omit(5);
+      A.omit(20);
       System.out.println("\nThe values in the copy of L are:\n");
       A.print();
       System.out.println("\nThe values in collection L are:");
       L.print();
-      int x = 4;
+      int x = 5;
       if(P.belongs(x))
          System.out.println("\n" + x + " is in collection P");
       else

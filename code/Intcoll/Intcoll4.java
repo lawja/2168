@@ -30,29 +30,37 @@ public class Intcoll4
       howmany = 0;
    }
 
-   /*
-
    /**
     * assigns all values within obj to the collection
     * Input: object to be copied
     */
-   /*
    public void copy(Intcoll4 obj)
    {
       if (this != obj)
       {
-         c = new boolean[obj.c.length];
+        ListNode temp;
+        if(obj.howmany == 0){
+          temp = null;
+        }else{
+          ListNode cur = obj.c;
 
-         int j = 0;
-         while ((j < c.length))
-         {
-            c[j] = obj.c[j];
-            j++;
-            howmany++;
-         }
+          temp = new ListNode();
+          temp.info = cur.info;
+          ListNode p = temp;
+
+          cur = cur.link;
+
+          while(cur != null){
+            p.link = new ListNode();
+            p = p.link;
+            p.info = cur.info;
+            cur = cur.link;
+          }
+        }
+        c = temp;
+        howmany = obj.howmany;
       }
    }
-   */
    
 
    /** 
@@ -66,7 +74,7 @@ public class Intcoll4
       while((p != null) && (p.info != i)){
         p = p.link;
       }
-      return ((p != null));
+      return (p != null);
    }
 
    /**
@@ -82,7 +90,6 @@ public class Intcoll4
       if(p == null){
         howmany++;
         p = new ListNode(i,c);
-        System.out.println("flag");
         c = p;
       }
    }
@@ -93,7 +100,22 @@ public class Intcoll4
     */
    public void omit(int i)
    {
-
+      if(belongs(i)){
+        ListNode p = c;
+        ListNode prev = null;
+        while((p != null) && (p.info != i)){
+          prev = p;
+          p = p.link;
+        }
+        if(p != null){
+          if(prev == null){ // if i is in the first node
+            c = c.link;
+          }else{
+            prev.link = p.link; // link the two together (skip)
+          }
+          howmany--;
+        }
+      }
    }
 
    /**
@@ -122,22 +144,21 @@ public class Intcoll4
     * Input: object that is being compared to the called upon object
     * Output: true or false
     */
-   /*
    public boolean equals(Intcoll4 obj)
    {
       boolean result = (howmany == obj.get_howmany());
       if(result){
-         int j = 0;
-         while ((j != howmany)&&result)
+         ListNode p = c;
+         while ((p != null)&&result)
          {
-            result = (obj.belongs(j) == c[j]); j++;
+            result = (obj.belongs(p.info));
+            p = p.link;
          }
-
       }
 
       return result;
    }
-    */
+
    private class ListNode
    {
       private int info;
