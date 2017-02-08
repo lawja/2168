@@ -31,7 +31,7 @@ public class Intcoll4client
       System.out.println("\nThe values in collection L are:");
       L.print();
 
-      if (P.equals(N)) System.out.println("\nP and N are equal.");
+      if (P.equals(L)) System.out.println("\nP and N are equal.");
       else System.out.println("\nP and N are NOT equal.");
       Intcoll4 A=new Intcoll4(); A.copy(L);
       System.out.println("\nThe values in the copy of L are:\n");

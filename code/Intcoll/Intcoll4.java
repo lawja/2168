@@ -47,6 +47,7 @@ public class Intcoll4
           temp = new ListNode();
           temp.info = cur.info;
           ListNode p = temp;
+          p.info = cur.info;
 
           cur = cur.link;
 
@@ -154,6 +155,47 @@ public class Intcoll4
             result = (obj.belongs(p.info));
             p = p.link;
          }
+      }
+
+      return result;
+   }
+   /*
+   public boolean isSorted(){
+      ListNode p = c;
+      boolean result = false;
+      if(p != null){
+        int prev = p.info;
+        p = p.link;
+        while((p != null) && (prev <= p.info)){
+          prev  = p.info;
+          p = p.link;
+        }
+        result = p == null;
+      }
+      return result;
+   }
+  */
+   public void reverse(){
+      if(c != null){
+          ListNode p = c;
+          ListNode temp = new ListNode(p.info,null);
+          ListNode d;
+          p = p.link;
+          while((p != null)){
+              d = temp;
+              temp = new ListNode(p.info,d);
+              p = p.link;
+          }
+          c = temp;
+      }
+   }
+
+   public int sum(){
+      ListNode p = c;
+      int result = 0;
+      while((p != null)){
+          result += p.info;
+          p = p.link;
       }
 
       return result;

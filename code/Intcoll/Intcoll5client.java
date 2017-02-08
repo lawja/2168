@@ -2,7 +2,7 @@
 //**********************************************************
 // FILE: NAME   : intcoll5client.java
 // DESCRIPTION  : This is a client of class Intcoll5.
-// Christopher Lawrence 1.25.17
+// Christopher Lawrence 2.7.17
 //**********************************************************
 
 import java.util.*;
@@ -37,12 +37,7 @@ public class Intcoll5client
       Intcoll5 A=new Intcoll5(); A.copy(L);
       System.out.println("\nThe values in the copy of L are:\n");
       A.print();
-      A.omit(5);
-      A.omit(20);
-      System.out.println("\nThe values in the copy of L are:\n");
-      A.print();
-      System.out.println("\nThe values in collection L are:");
-      L.print();
+
       int x = 5;
       if(P.belongs(x))
          System.out.println("\n" + x + " is in collection P");

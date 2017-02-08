@@ -1,7 +1,7 @@
 //*********************************************************************
 // FILE NAME    : Intcoll5.java
 // DESCRIPTION  : This file contains the class Intcoll4.
-// Christopher Lawrence 1.25.17
+// Christopher Lawrence 2.7.17
 //*********************************************************************
 
 import java.util.*;
@@ -21,6 +21,7 @@ public class Intcoll5
    /**
     * makes an empty collection and makes the capacity i integers
     * Input: capacity of the collection
+    * Output: none
     */
    public Intcoll5(int i)
    {
@@ -30,6 +31,7 @@ public class Intcoll5
    /**
     * assigns all values within obj to the collection
     * Input: object to be copied
+    * Output: none
     */
    public void copy(Intcoll5 obj)
    {
@@ -58,16 +60,18 @@ public class Intcoll5
    /**
     * inserts i into the collection unless it is full or already in the collection
     * Input: value that is inserted into the collection
+    * Output: none
     */
    public void insert(int i)
    {
-      if(!(belongs(i)))
+      if((i > 0) && (!(c.contains(i))))
         c.add(new Integer(i));
    }
 
    /**
     * removes i from the collection if it is in the collection
     * Input: the value that is removed from the collection if in the collection
+    * Output: none
     */
    public void omit(int i)
    {
@@ -111,10 +115,7 @@ public class Intcoll5
         Integer m = I.next();
         result = obj.belongs(m.intValue());
      }
-     while(J.hasNext() && result){
-        Integer m = J.next();
-        result = belongs(m.intValue());
-     }
+
      return result;
    }
 }
