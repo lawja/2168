@@ -1,6 +1,6 @@
 //*********************************************************************
 // FILE NAME    : Intcoll5.java
-// DESCRIPTION  : This file contains the class Intcoll4.
+// DESCRIPTION  : This file contains the class Intcoll5.
 // Christopher Lawrence 2.7.17
 //*********************************************************************
 
@@ -64,8 +64,15 @@ public class Intcoll5
     */
    public void insert(int i)
    {
-      if((i > 0) && (!(c.contains(i))))
-        c.add(new Integer(i));
+      Integer I=new Integer(i);
+
+      if ((i>0)&&(!c.contains(i)))
+
+      { 
+
+           c.addFirst(I);
+
+      }
    }
 
    /**
@@ -109,13 +116,11 @@ public class Intcoll5
    public boolean equals(Intcoll5 obj)
    {
      ListIterator<Integer> I = c.listIterator();
-     ListIterator<Integer> J = obj.c.listIterator();
      boolean result = (get_howmany() == obj.get_howmany());
      while(I.hasNext() && result){
         Integer m = I.next();
         result = obj.belongs(m.intValue());
      }
-
      return result;
    }
 }
