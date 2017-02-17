@@ -113,7 +113,15 @@ public class Intcoll6
                   pred.left = p.left;
               }
             }else{
-              c = null;
+                btNode l = p;
+                l = p.left;
+                btNode pred_l = null;
+                while((l != null)){
+                  pred_l = l;
+                  l = l.right;
+                }
+                p.info = pred_l.info;
+                pred_l = pred_l.left;
             }
          }
       }    
