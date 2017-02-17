@@ -121,7 +121,6 @@ public class Intcoll6
                   l = l.right;
                 }
                 p.info = pred_l.info;
-                pred_l = pred_l.left;
             }
          }
       }    
