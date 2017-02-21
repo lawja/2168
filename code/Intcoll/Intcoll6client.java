@@ -32,8 +32,8 @@ public class Intcoll6client
       System.out.println("\nThe values in collection L are:");
       L.print();
 
-      /*if (P.equals(L)) System.out.println("\nP and N are equal.");
-      else System.out.println("\nP and N are NOT equal.");
+      if (P.equals(L)) System.out.println("\nP and L are equal.");
+      else System.out.println("\nP and L are NOT equal.");
       Intcoll6 A=new Intcoll6(); A.copy(L);
       System.out.println("\nThe values in the copy of L are:\n");
       A.print();
@@ -42,6 +42,6 @@ public class Intcoll6client
       if(P.belongs(x))
          System.out.println("\n" + x + " is in collection P");
       else
-         System.out.println("\n" + x + " is not in collection P");*/
+         System.out.println("\n" + x + " is not in collection P");
    }
 }

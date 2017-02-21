@@ -113,14 +113,20 @@ public class Intcoll6
                   pred.left = p.left;
               }
             }else{
+                btNode it = p;
                 btNode l = p;
-                l = p.left;
-                btNode pred_l = null;
-                while((l != null)){
-                  pred_l = l;
-                  l = l.right;
+                pred = it.left;
+                it = pred.right;
+                while (it != null) {
+                    l = pred;
+                    pred = it;
+                    it = it.right;
                 }
-                p.info = pred_l.info;
+                p.info = pred.info;
+                if (l.info == p.info) 
+                  l.left = pred.left;
+                else 
+                  l.right = pred.left;
             }
          }
       }    
@@ -150,9 +156,9 @@ public class Intcoll6
       int j = 0; boolean result  = (howmany==obj.howmany);
       if (result)
       { 
- 
-          //Missing
-         
+        equals(obj.c.left);
+        result = belongs(obj.c.info);
+        equals(obj.c.right);        
       }
       return result;
    }
