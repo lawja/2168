@@ -46,14 +46,15 @@ public class Intcoll3client
    }
 
    public static int sum(Intcoll3 obj){
-      int hm = obj.get_howmany();
-      int i = 0, k = 0, sum = 0;
-      while(i != hm){
-         if(obj.belongs(k)){
-            sum += k;
-            i++;
+      int i = 0, j = 0, hm = obj.get_howmany();
+      int sum = 0;
+
+      while(j != hm){
+         if(obj.belongs(i)){
+            sum += i;
+            j++;
          }
-         k++;
+         i++;
       }
       return sum;
    }

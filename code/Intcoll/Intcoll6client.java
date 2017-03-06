@@ -14,7 +14,7 @@ public class Intcoll6client
    public static void main(String[] args)
    {
       int value; Scanner keyboard=new Scanner(System.in);
-      Intcoll6 P=new Intcoll6(6), N=new Intcoll6(6), L= new Intcoll6(6);
+      Intcoll6 P=new Intcoll6(5), N=new Intcoll6(5), L= new Intcoll6(5);
 
       System.out.println("Enter an integer to be inserted or 0 to quit:");
       value=keyboard.nextInt();
@@ -38,7 +38,7 @@ public class Intcoll6client
       System.out.println("\nThe values in the copy of L are:\n");
       A.print();
 
-      int x = 6;
+      int x = 5;
       if(P.belongs(x))
          System.out.println("\n" + x + " is in collection P");
       else

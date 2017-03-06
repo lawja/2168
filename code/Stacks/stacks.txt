@@ -1,0 +1,9 @@
+Operations
+	push - add to top of stack, if not full, increment top, a[top]=i
+	pop - if not empty, return a[top] and remove from stack, decrement top
+	peek - return a[top] no removal
+	size - returns size of stack
+	empty - if stack is empty return true, if not false
+	overflow
+	underlow
+top is a member that points to the top of the stack

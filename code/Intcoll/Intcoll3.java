@@ -122,7 +122,7 @@ public class Intcoll3
    {
       int j = 0, i = 0;
       System.out.println();
-      while ((j != howmany) && (i != c.length - 1))
+      while ((j != howmany) && (i != c.length))
       {
          if(c[i]){
             System.out.println(i);
