@@ -41,6 +41,10 @@ public class Intcoll1client
       else
          System.out.println("\n" + x + " is not in collection P");
 
+      P.omit(3);
+      System.out.println("\nThe values in collection P are:");
+      P.print();
+
       /* Increase all elements by one
       Intcoll1 nP = new Intcoll1(P.get_howmany());
 

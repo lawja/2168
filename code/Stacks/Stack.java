@@ -1,3 +1,4 @@
+// implementation of a LIFO stack, array based
 public class Stack{
 	int top, size;
 	int[] a;
@@ -45,7 +46,15 @@ public class Stack{
 		return (size - top);
 	}
 
-	public boolean empty(){
+	public boolean isEmpty(){
 		return (top == size);
+	}
+
+	public boolean isFull(){
+		return top == size;
+	}
+
+	public void print(){
+		for(int i = 0; i <)
 	}
 }

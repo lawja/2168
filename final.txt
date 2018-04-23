@@ -1,0 +1,34 @@
+Data Structures
+	- Array
+	- LinkedList
+		* Simple LinkedList -> object of the ListNode class
+		* Generic LinkedList -> java API
+	- Binary Tree
+		* Complete Binary Tree
+		* Full
+		* BSTs
+			- preorder
+			- inorder
+			- postorder
+		* Huffman Trees
+		* Min/Max Heaps
+			- sequential: array-based
+			- linked: btNode based
+			- shift algorithm
+			- reheap
+	- Priority Queues
+		* Stacks
+		* Queues
+	- Hash Tables
+	- Trees
+	- Graphs
+		* directed
+		* undirected
+		* weighted
+		* dijkstra
+		* DFS/BFS
+Sorting
+	- insertion
+	- merge
+	- quicksort
+	- heapsort

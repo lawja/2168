@@ -1,12 +1,12 @@
 //***********************************************************************
-// FILE NAME    : Intcoll6.java
-// DESCRIPTION  : This file contains the class Intcoll6.
+// FILE NAME    : Intcoll.java
+// DESCRIPTION  : This file contains the class Intcoll.
 //************************************************************************
 
 import java.util.*;
 import java.io.*;
 
-public class Intcoll6
+public class Intcoll
 {
    private int howmany;
    private btNode c;
@@ -14,7 +14,7 @@ public class Intcoll6
    /**
     * makes an empty collection
     */
-   public Intcoll6()
+   public Intcoll()
    {
       c = null;
       howmany = 0;
@@ -25,7 +25,7 @@ public class Intcoll6
     * Input: capacity of the collection
     * Output: none
     */
-   public Intcoll6(int i)
+   public Intcoll(int i)
    {
       c = null;
       howmany = 0;
@@ -54,7 +54,7 @@ public class Intcoll6
     * Input: object to be copied
     * Output: none
     */
-   public void copy(Intcoll6 obj)
+   public void copy(Intcoll obj)
    {
       if (this!=obj)
       {
@@ -205,7 +205,7 @@ public class Intcoll6
     * Input: object that is being compared to the called upon object
     * Output: true or false
     */
-   public boolean equals(Intcoll6 obj)
+   public boolean equals(Intcoll obj)
    {
       int j = 0; boolean result  = (howmany==obj.howmany);
       if (result)
@@ -229,7 +229,6 @@ public class Intcoll6
       {
           printtree(t.left);
           System.out.println(t.info);
-          
           printtree(t.right);
       }
    }

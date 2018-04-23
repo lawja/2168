@@ -95,6 +95,22 @@ public class Intcoll4
       }
    }
 
+   public void insertLast(int i){
+      ListNode p = c;
+      if(p != null){
+        while((p.link != null) && (p.info != i)){
+          p = p.link;
+        }
+        if(p.info != i){
+          howmany++;
+          p.link = new ListNode(i,null);
+        }
+      }else{
+        howmany++;
+        c = new ListNode(i,null);
+      }
+   }
+
    /**
     * removes i from the collection if it is in the collection
     * Input: the value that is removed from the collection if in the collection
@@ -179,11 +195,9 @@ public class Intcoll4
       if(c != null){
           ListNode p = c;
           ListNode temp = new ListNode(p.info,null);
-          ListNode d;
           p = p.link;
           while((p != null)){
-              d = temp;
-              temp = new ListNode(p.info,d);
+              temp = new ListNode(p.info,temp);
               p = p.link;
           }
           c = temp;
@@ -207,7 +221,6 @@ public class Intcoll4
       private ListNode link;
 
       public ListNode(){
-        info = 0;
         link = null;
       }
 

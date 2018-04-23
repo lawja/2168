@@ -1,23 +1,24 @@
 //***********************************************************************
-// FILE NAME    : Intcoll6.java
-// DESCRIPTION  : This file contains the class Intcoll6.
+// FILE NAME    : Stringcoll.java
+// DESCRIPTION  : This file contains the class Stringcoll.
 //************************************************************************
 
 import java.util.*;
 import java.io.*;
 
-public class Intcoll6
+public class MultiStringcoll
 {
-   private int howmany;
+   private int howmany, total;
    private btNode c;
 
    /**
-    * makes an empty collection
+    * makes an empty collection and makes the capacity 500 integers
     */
-   public Intcoll6()
+   public MultiStringcoll()
    {
       c = null;
       howmany = 0;
+      total = 0;
    }
 
    /**
@@ -25,10 +26,11 @@ public class Intcoll6
     * Input: capacity of the collection
     * Output: none
     */
-   public Intcoll6(int i)
+   public MultiStringcoll(int i)
    {
       c = null;
       howmany = 0;
+      total = 0;
    }
 
    /**
@@ -43,6 +45,7 @@ public class Intcoll6
       {
          root=new btNode();
          root.info=t.info; 
+         root.amount=t.amount;
          root.left=copytree(t.left);
          root.right=copytree(t.right);
       }
@@ -54,11 +57,12 @@ public class Intcoll6
     * Input: object to be copied
     * Output: none
     */
-   public void copy(Intcoll6 obj)
+   public void copy(MultiStringcoll obj)
    {
       if (this!=obj)
       {
           howmany=obj.howmany;
+          total=obj.total;
           c=copytree(obj.c);  
       }
    }
@@ -68,29 +72,29 @@ public class Intcoll6
     * Input: value that is inserted into the collection
     * Output: none
     */
-   public void insert(int i)
+   public void insert(String i)
    {
-      if (i>0)
-      {
-         btNode pred=null, p=c;
+       btNode pred=null, p=c;
 
-         while ((p!=null)&&(p.info!=i))
-         {
-             pred=p;
-      	     if (p.info>i) p=p.left;
-      	     else p=p.right;
-         }
-         if (p==null)
-         {
-            howmany++; p=new btNode(i, null, null);
-            if (pred!=null)
-            {
-    	       if (pred.info>i) pred.left=p;
-                   else pred.right=p;
-	          }
-	          else c=p;
-         }
-      }
+       while ((p!=null)&&(!(p.info.equals(i))))
+       {
+           pred=p;
+    	     if ((p.info.compareTo(i)) > 0) p=p.left;
+    	     else p=p.right;
+       }
+       total++;
+       if (p == null)
+       {
+          howmany++; p=new btNode(i, 1, null, null);
+          if (pred!=null)
+          {
+  	         if ((pred.info.compareTo(i)) > 0) pred.left=p;
+             else pred.right=p;
+          }
+          else c=p;
+       }else{
+          p.amount++;
+       }
    }
 
    /**
@@ -98,26 +102,28 @@ public class Intcoll6
     * Input: the value that is removed from the collection if in the collection
     * Output: none
     */
-   public void omit(int i)
-   {
-      if (i>0)
-      {
-         btNode pred=null, p=c;
+   public void omit(String i)
+   {  
+       btNode pred=null, p=c;
 
-         while ((p!=null)&&(p.info!=i))
-         {
-             pred=p;
-             if (p.info>i) p=p.left;
-             else p=p.right;
-         }
+       while ((p!=null)&&(!(p.info.equals(i))))
+       {
+           pred=p;
+           if ((p.info.compareTo(i)) > 0) p=p.left;
+           else p=p.right;
+       }
 
-         if(p != null){
+       if(p != null){
+          total--;
+          if(p.amount > 1){
+            p.amount--;
+          }else{
             howmany--;
             if((p.left == null) && (p.right == null)){
               if(pred == null){
                 c = null;
               }else{
-                if(i > pred.info)
+                if(i.compareTo(pred.info) > 0)
                   pred.right = null;
                 else
                   pred.left = null;
@@ -126,7 +132,7 @@ public class Intcoll6
               if(pred == null){
                 c = p.right;
               }else{
-                if(i > pred.info)
+                if(i.compareTo(pred.info) > 0)
                   pred.right = p.right;
                 else
                   pred.left = p.right;
@@ -135,7 +141,7 @@ public class Intcoll6
               if(pred == null){
                 c = p.left;
               }else{
-                if(i > pred.info)
+                if(i.compareTo(pred.info) > 0)
                   pred.right = p.left;
                 else
                   pred.left = p.left;
@@ -151,45 +157,58 @@ public class Intcoll6
                     q = q.right;
                 } 
                 p.info = pred.info;
-                if (l.info == p.info) 
+                if (l.info.equals(p.info)) 
                   l.left = pred.left;
                 else 
                   l.right = pred.left;
             }
-         }
-      }    
+          }
+         
+      }
+
+      return;    
 
    }
 
    /** 
-    * returns true if i is within the collection and greater than zero , otherwise returns false
+    * returns returns the amount of instances of the string in the collection
     * Input: value that is being searched for
-    * Output: Returns true or false
+    * Output: Returns the amount of instances of the string, an int
     */
-   public boolean belongs(int i)
+   public int belongs(String i)
    {
       btNode p=c;
-      int a[] = new int[howmany];
-      toarray(p,a,0);
+      String a[] = new String[howmany];
+      int[] b = new int[howmany];
+
+      toarray(p,a,b,0);
+
       int left = 0, right = howmany - 1;
       int middle = right / 2;
+
       while(right >= left){
-          if(a[middle] == i)
-            return true;
-          else if(a[middle] > i)
+          if(a[middle].compareTo(i) == 0)
+            return b[middle];
+          else if(a[middle].compareTo(i) > 0)
             right = middle - 1;
-          else if(a[middle] < i)
+          else if(a[middle].compareTo(i) < 0)
             left = middle + 1;
           middle = (left + right)/2;
       }
-      return false;
+      return 0;
    }
 
    /**
-    * returns how many integers are in the collection
+    * returns how many distinct Strings are in the collection
     * Output: an integer
     */
    public int get_howmany() {return howmany;}
+
+   /**
+    * returns how many total Strings are in the collection
+    * Output: an integer
+    */
+   public int get_total() {return total;}
 
    /**
     * print all values within the collection
@@ -200,23 +219,21 @@ public class Intcoll6
    }
 
    /** 
-    * returns true if if the integers in the collection are exactly the same
-    * as the integers in obj's collection
+    * returns true if if the Strings in the collection are exactly the same
+    * as the Strings in obj's collection
     * Input: object that is being compared to the called upon object
     * Output: true or false
     */
-   public boolean equals(Intcoll6 obj)
+   public boolean equals(MultiStringcoll obj)
    {
-      int j = 0; boolean result  = (howmany==obj.howmany);
-      if (result)
-      { 
-        result = belongs(obj.c.info);
-        equals(obj.c.left);
-        equals(obj.c.right);        
+      boolean result = (obj.howmany == howmany)&&(obj.total == total);
+      if(result && howmany != 0){
+          result = (belongs(obj.c.info) > 0);
+          equals(obj.c.right);
+          equals(obj.c.left);
       }
       return result;
    }
-
 
    /**
     * prints out a binary tree in order
@@ -228,22 +245,14 @@ public class Intcoll6
       if (t!=null)
       {
           printtree(t.left);
-          System.out.println(t.info);
-          
+          System.out.print(t.info);
+          if(t.amount > 1){
+            System.out.println("(" + t.amount + ")");
+          }else{
+            System.out.println();
+          }
           printtree(t.right);
       }
-   }
-
-   private static int sumtree(btNode t){
-      if(t == null)
-        return 0;
-      int right = sumtree(t.right);
-      int left = sumtree(t.left);
-      return t.info + right + left;
-   }
-
-   public int sum(){
-      return sumtree(c);
    }
 
    /**
@@ -251,47 +260,32 @@ public class Intcoll6
     * Input: the tree being copied, an array to store the tree in, an integer
     * Output: an integer
     */
-   private static int toarray(btNode t, int[] a, int i)
+   private static int toarray(btNode t, String[] a, int[] b, int i)
    {
       int num_nodes=0;
       if (t!=null)
       {
-         num_nodes=toarray(t.left, a, i);
+         num_nodes=toarray(t.left, a, b, i);
          a[num_nodes+i]=t.info;   
-         num_nodes=num_nodes+1+toarray(t.right, a, num_nodes+i+1);
+         b[num_nodes+i]=t.amount;
+         num_nodes=num_nodes+1+toarray(t.right, a, b, num_nodes+i+1);
       }
       return num_nodes;
    }
 
-   private static int depth(btNode t){
-      if(t == null)
-        return 0;
-      int left = depth(t.left);
-      int right = depth(t.right);
-      int max;
-      if(left > right)
-        max = left;
-      else
-        max = right;
-      return 1 + max;
-   }
-
-   public int coll_depth(){
-      return depth(c);
-   }
-
    private static class btNode
    {
-       int info; btNode left; btNode right;
+       String info; btNode left; btNode right;
+       int amount;
 
-       private btNode(int s, btNode lt, btNode rt)
+       private btNode(String s, int a, btNode lt, btNode rt)
        {
-          info=s; left=lt; right=rt;  
+          info=s; amount=a; left=lt; right=rt;  
        }
 
        private btNode()
        {
-          info=0; left=null; right=null;
+          info=""; amount=0;left=null; right=null;
        }
    }
 }

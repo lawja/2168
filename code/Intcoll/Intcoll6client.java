@@ -43,5 +43,7 @@ public class Intcoll6client
          System.out.println("\n" + x + " is in collection P");
       else
          System.out.println("\n" + x + " is not in collection P");
+
+      System.out.println("Sum of P -> " + P.sum());
    }
 }

@@ -1,47 +1,57 @@
 import java.util.*;
 
+// implementation of a LIFO stack, LinkedList based
 public class StackLL{
 	LinkedList<Integer> l;
-	int size, top;
+	int capacity;
 
 	public StackLL(){
 		l = new LinkedList<Integer>();
+		capacity = 50;
 	}
 
 	public StackLL(int i){
 		l = new LinkedList<Integer>();
+		capacity = i;
 	}
 
 	public void push(int i){
-		l.addFirst(i);
-
+		l.addFirst(new Integer(i));
 	}
 
 	public int pop(){
-		if(top != size){
-			int i = top;
-			top++;
-			return a[i];
-		}else{
-			System.out.println("Overflow");
-			return -1;
-		}
+		Integer i = l.getFirst();
+		l.removeFirst();
+		return i.intValue();
 	}
 
 	public int peek(){
-		if(top != size){
-			return a[top];
-		}else{
-			return -1;
-		}
+		return (l.getFirst()).intValue();
 	}
 
 	public int size(){
-		return (size - top);
+		return l.size();
 	}
 
-	public boolean empty(){
-		return (top == size);
+	public boolean isEmpty(){
+		return l.peek() == null;
+	}
+
+	public boolean isFull(){
+		return l.size() == capacity;
+	}
+
+	public String toString(){
+		ListIterator<Integer> I = l.listIterator();
+		StringBuilder builder = new StringBuilder();
+		int i = 0;
+		while(I.hasNext()){
+			Integer m = I.next();
+			System.out.println("[" + m.intValue() + "]");
+		}
+
+		return builder.toString();
+
 	}
 
 

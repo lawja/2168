@@ -19,8 +19,8 @@ public class Intcoll4client
       value=keyboard.nextInt();
       while(value != SENTINEL)
       {
-         if (value > 0) {P.insert(value); L.insert(value);}
-         else {N.insert(-value); L.omit(-value);}
+         if (value > 0) {P.insertLast(value); L.insertLast(value);}
+         else {N.insertLast(-value); L.omit(-value);}
          System.out.println("Enter next integer to be inserted or 0 to quit:");
          value=keyboard.nextInt();
       }
@@ -43,5 +43,13 @@ public class Intcoll4client
          System.out.println("\n" + x + " is in collection P");
       else
          System.out.println("\n" + x + " is not in collection P");
+      System.out.println("\nThe values in collection P are:");
+      P.print();
+
+      P.reverse();
+
+      System.out.println("\nThe values in collection P are:");
+      P.print();
+
    }
 }
